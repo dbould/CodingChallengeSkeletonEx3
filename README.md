@@ -1,9 +1,11 @@
-Secret Escapes - Grails coding challenge skeleton
+# Secret Escapes
 
-Plugins Installed:
+##Grails coding challenge skeleton
 
-*Mail
-*Greenmail
-*Jquery
-*Twitter bootstrap
-*Spring security (disabled by default)
+### Plugins Installed:
+
+* Mail
+* Greenmail
+* Jquery
+* Twitter bootstrap
+* Spring security (disabled by default)
