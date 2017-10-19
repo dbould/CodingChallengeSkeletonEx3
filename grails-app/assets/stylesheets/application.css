@@ -18,3 +18,32 @@ div#fixedheader {
     margin: 22px 0 20px;
     width: 220px;
 }
+
+.main-menu {
+    float: left;
+    font-family: Verdana Arial sans-serif;
+    clear: left;
+}
+
+.main-menu a {
+    padding:8px 10px;
+    font-size: 12px;
+    font-family: Verdana, Arial, sans-serif;
+}
+
+.main-menu a:link {
+    color: #ffffff;
+    text-decoration: none;
+}
+.main-menu a:visited {
+    color: #ffffff;
+    text-decoration: none;
+}
+.main-menu a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+.main-menu a:active {
+    color: #ffffff;
+    text-decoration: none;
+}
