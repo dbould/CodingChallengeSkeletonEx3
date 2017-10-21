@@ -4,6 +4,13 @@ class AccountController {
 
     def index() {
         def accountId = params.id
-        render view: "account", model: [account: Account.get(accountId)]
+
+        def query = Transaction.where {
+            fromAccount == accountId
+        }
+
+        def transactions = query.find()
+
+        render view: "account", model: [account: Account.get(accountId), transactions: transactions]
     }
 }

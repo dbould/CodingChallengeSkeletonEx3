@@ -7,6 +7,28 @@
 </head>
 
 <body>
-    ${account.name}
+    ${account.name}'s Transactions
+
+<table>
+    <tr>
+        <th>
+            To Account
+        </th>
+        <th>
+            Amount
+        </th>
+    </tr>
+
+    <g:each var="transaction" in="${transactions}">
+        <tr>
+            <td>
+                ${transaction.toAccount}
+            </td>
+            <td>
+                ${transaction.amount}
+            </td>
+        </tr>
+    </g:each>
+</table>
 </body>
 </html>
