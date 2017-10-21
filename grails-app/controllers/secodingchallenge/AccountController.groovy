@@ -9,7 +9,7 @@ class AccountController {
             fromAccount == accountId
         }
 
-        def transactions = query.find()
+        def transactions = query.list()
 
         render view: "account", model: [account: Account.get(accountId), transactions: transactions]
     }

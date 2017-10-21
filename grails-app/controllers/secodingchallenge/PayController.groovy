@@ -19,7 +19,22 @@ class PayController {
 
         def fromName = Account.get(params.fromAccount).name
         def toName = Account.get(params.toAccount).name
-        def amount = params.amount
+        Double amount = params.double('amount')
+
+        def fromAccount = Account.get(params.fromAccount)
+        Double fromAccountBalance = fromAccount.balance
+        Double newFromBalance = fromAccountBalance - amount
+
+        if (newFromBalance >= 0) {
+            fromAccount.balance = newFromBalance
+            fromAccount.save(flush: true)
+
+            def toAccount = Account.get(params.toAccount)
+            Double toAccountBalance = toAccount.balance
+            Double newToBalance = toAccountBalance + amount
+            toAccount.balance = newToBalance
+            def result = toAccount.save(flush: true)
+        }
 
         render view: "pay", model: [accounts: accounts, fromName: fromName, toName: toName, amount: amount]
     }

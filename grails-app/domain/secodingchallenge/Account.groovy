@@ -4,7 +4,7 @@ class Account {
 
     String name
     String email
-    long balance
+    Double balance
 
     static constraints = {
 

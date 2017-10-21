@@ -3,7 +3,7 @@ package secodingchallenge
 class Transaction {
     int fromAccount
     int toAccount
-    long amount
+    Double amount
 
     static constraints = {
 
