@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 	<head>
-
         <asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
 		<g:layoutHead/>
@@ -13,6 +12,8 @@
             <a href="http://localhost:8080/seCodingChallenge/pay">PAY</a>
         </div>
 	</div>
-		<g:layoutBody/>
+		<div id="main-content">
+			<g:layoutBody/>
+		</div>
 	</body>
 </html>
