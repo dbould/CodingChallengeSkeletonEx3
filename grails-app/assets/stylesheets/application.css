@@ -1,5 +1,6 @@
 body {
     margin:80px 80px 100px 100px;
+    font-family: Verdana Arial sans-serif;
 }
 
 div#fixedheader {
@@ -9,8 +10,13 @@ div#fixedheader {
     width:100%;
     color:#CCC;
     background:black;
+    clear: both;
 }
 
+div#main-content {
+    clear: both;
+    margin: 110px 0 0 0;
+}
 
 .site-logo {
     float: left;
