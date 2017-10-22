@@ -1,9 +1,14 @@
 package secodingchallenge
 
-class AccountController {
+class TransactionController {
 
     def index() {
-        def accountId = params.id
+        def accounts = Account.list()
+        render view: "transactions", model: [accounts: accounts]
+    }
+
+    def accountTransactions() {
+        def accountId = params.accountId
 
         def query = Transaction.where {
             fromAccount == accountId

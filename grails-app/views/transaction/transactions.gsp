@@ -20,7 +20,7 @@
 <g:each var="account" in="${accounts}">
     <tr>
         <td>
-            <a href="http://localhost:8080/seCodingChallenge/account?id=${account.id}">${account.name}</a>
+            <a href="http://localhost:8080/seCodingChallenge/Transaction/accountTransactions?accountId=${account.id}">${account.name}</a>
         </td>
         <td>
             ${account.balance}

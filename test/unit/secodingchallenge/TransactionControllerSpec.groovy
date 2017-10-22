@@ -6,8 +6,8 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
-@TestFor(AccountController)
-class AccountControllerSpec extends Specification {
+@TestFor(TransactionController)
+class TransactionControllerSpec extends Specification {
 
     def setup() {
     }
@@ -16,5 +16,7 @@ class AccountControllerSpec extends Specification {
     }
 
     void "test something"() {
+        expect:
+            true == true
     }
 }

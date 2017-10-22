@@ -16,5 +16,7 @@ class PayControllerSpec extends Specification {
     }
 
     void "test something"() {
+        expect:
+        true == true
     }
 }
