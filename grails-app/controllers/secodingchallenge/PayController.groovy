@@ -1,6 +1,8 @@
 package secodingchallenge
 
 class PayController {
+    def accountService
+    def payService
 
     def index() {
         def accounts = Account.list()
@@ -17,35 +19,18 @@ class PayController {
                 amount: params.amount
         ).save()
 
-        def fromName = Account.get(params.fromAccount).name
-        def toName = Account.get(params.toAccount).name
+        def fromAccount = Account.get(params.fromAccount)
         Double amount = params.double('amount')
 
-        def fromAccount = Account.get(params.fromAccount)
-        Double fromAccountBalance = fromAccount.balance
-        Double newFromBalance = fromAccountBalance - amount
+        def approveTransaction = payService.approveTransaction(fromAccount.balance, amount)
 
-        def message = ''
-
-        if (newFromBalance >= 0) {
-            fromAccount.balance = newFromBalance
-            fromAccount.save(flush: true)
-
-            def toAccount = Account.get(params.toAccount)
-            Double toAccountBalance = toAccount.balance
-            Double newToBalance = toAccountBalance + amount
-            toAccount.balance = newToBalance
-            toAccount.save(flush: true)
-
-            message = 'Transfer complete.'
-        } else {
-            message = 'Not enough funds in ' + fromName + '\'s account.  Transfer was unsuccessful.'
+        if (approveTransaction == true) {
+            accountService.updateAccountBalances(params.int('fromAccount'),
+                                                 params.int('toAccount'),
+                                                 amount)
         }
 
         render view: "pay", model: [accounts: accounts,
-                                    fromName: fromName,
-                                    toName: toName,
-                                    amount: amount,
-                                    message: message]
+                                    message: payService.getUserMessage(approveTransaction, fromAccount.name)]
     }
 }
