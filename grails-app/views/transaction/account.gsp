@@ -22,10 +22,10 @@
     <g:each var="transaction" in="${transactions}">
         <tr>
             <td>
-                ${transaction.toAccount}
+                ${names[transaction.toAccount]}
             </td>
             <td>
-                ${transaction.amount}
+                £${transaction.amount}
             </td>
         </tr>
     </g:each>

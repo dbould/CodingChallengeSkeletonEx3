@@ -16,6 +16,13 @@ class TransactionController {
 
         def transactions = query.list()
 
-        render view: "account", model: [account: Account.get(accountId), transactions: transactions]
+        def nameMap = [:]
+        def accounts = Account.list()
+
+        accounts.each {
+            nameMap[(it.id.toInteger())] = it.name
+        }
+
+        render view: "account", model: [account: Account.get(accountId), transactions: transactions, names: nameMap]
     }
 }

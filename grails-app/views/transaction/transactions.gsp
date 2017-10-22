@@ -23,7 +23,7 @@
             <a href="http://localhost:8080/seCodingChallenge/Transaction/accountTransactions?accountId=${account.id}">${account.name}</a>
         </td>
         <td>
-            ${account.balance}
+            £${account.balance}
         </td>
     </tr>
 </g:each>
