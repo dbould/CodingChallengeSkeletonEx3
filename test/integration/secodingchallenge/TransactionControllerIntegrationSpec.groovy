@@ -8,13 +8,13 @@ class TransactionControllerIntegrationSpec extends IntegrationSpec {
         new Account(name: "Sam", email: "dbould@gmail.com", balance: 200).save()
         new Account(name: "Alex", email: "dbould@gmail.com", balance: 200).save()
         new Account(name: "Frankie", email: "dbould@gmail.com", balance: 200).save()
-        new Transaction(fromAccount: 1, toAccount: 2, amount: 30)
+        new Transaction(fromAccount: 1, toAccount: 2, amount: 30).save()
     }
 
     def cleanup() {
     }
 
-    void "test something"() {
+    void "test all accounts are listed"() {
         def controller = new TransactionController()
 
         when: "The message action is invoked"
