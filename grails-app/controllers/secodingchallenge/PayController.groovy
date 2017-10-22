@@ -37,9 +37,9 @@ class PayController {
             toAccount.balance = newToBalance
             toAccount.save(flush: true)
 
-            message = 'Transfer complete.';
+            message = 'Transfer complete.'
         } else {
-            message = 'Not enough funds in ' + fromName + '\'s account.  Transfer was unsuccessful.';
+            message = 'Not enough funds in ' + fromName + '\'s account.  Transfer was unsuccessful.'
         }
 
         render view: "pay", model: [accounts: accounts,
