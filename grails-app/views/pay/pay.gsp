@@ -6,6 +6,8 @@
 </head>
 
 <body>
+${message}
+
 <g:form name="myForm" url="[action:'Transfer', controller:'Pay']">
     <label for="fromAccount">From Account: </label>
     <g:select id="fromAccount"

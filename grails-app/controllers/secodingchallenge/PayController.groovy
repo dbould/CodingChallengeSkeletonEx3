@@ -25,6 +25,8 @@ class PayController {
         Double fromAccountBalance = fromAccount.balance
         Double newFromBalance = fromAccountBalance - amount
 
+        def message = ''
+
         if (newFromBalance >= 0) {
             fromAccount.balance = newFromBalance
             fromAccount.save(flush: true)
@@ -33,9 +35,17 @@ class PayController {
             Double toAccountBalance = toAccount.balance
             Double newToBalance = toAccountBalance + amount
             toAccount.balance = newToBalance
-            def result = toAccount.save(flush: true)
+            toAccount.save(flush: true)
+
+            message = 'Transfer complete.';
+        } else {
+            message = 'Not enough funds in ' + fromName + '\'s account.  Transfer was unsuccessful.';
         }
 
-        render view: "pay", model: [accounts: accounts, fromName: fromName, toName: toName, amount: amount]
+        render view: "pay", model: [accounts: accounts,
+                                    fromName: fromName,
+                                    toName: toName,
+                                    amount: amount,
+                                    message: message]
     }
 }
