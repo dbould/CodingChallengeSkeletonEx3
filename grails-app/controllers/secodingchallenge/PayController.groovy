@@ -25,7 +25,7 @@ class PayController {
         def approveTransaction = payService.approveTransaction(fromAccount.balance, amount)
 
         if (approveTransaction == true) {
-            accountService.updateAccountBalances(params.int('fromAccount'),
+            accountService.updateBalances(params.int('fromAccount'),
                                                  params.int('toAccount'),
                                                  amount)
         }

@@ -5,20 +5,25 @@ import grails.transaction.Transactional
 @Transactional
 class AccountService {
 
-    def updateAccountBalances(int fromAccountId, int toAccountId, Double amount) {
-        updateFromBalance(fromAccountId, amount)
-        updateToBalance(toAccountId, amount)
+    def updateBalances(int fromAccountId, int toAccountId, Double amount) {
+        def fromBalance = getNewFromBalance(fromAccountId, amount)
+        updateBalance(fromAccountId, fromBalance)
+
+        def toBalance = getNewToBalance(toAccountId, amount)
+        updateBalance(toAccountId, toBalance)
     }
 
-    def updateFromBalance(int accountId, amount) {
-        def account = Account.get(accountId)
-        account.balance = account.balance - amount
-        account.save(flush: true)
+    def getNewFromBalance(int accountId, Double amount) {
+        return (Account.get(accountId).balance - amount)
     }
 
-    def updateToBalance(int accountId, amount) {
+    def getNewToBalance(int accountId, Double amount) {
+        return Account.get(accountId).balance + amount
+    }
+
+    def updateBalance(int accountId, amount) {
         def account = Account.get(accountId)
-        account.balance = account.balance + amount
+        account.balance = amount
         account.save(flush: true)
     }
 }
